@@ -23,8 +23,10 @@ const (
 )
 
 var (
-	resourceWithHistoryDebug = strings.ToLower(os.Getenv("KAPP_DEBUG_RESOURCE_WITH_HISTORY")) == "true"
+	resourceWithHistoryDebug = debugEnabled(os.Getenv("KAPP_DEBUG_RESOURCE_WITH_HISTORY"))
 )
+
+func debugEnabled(val string) bool { return strings.ToLower(val) == "true" }
 
 type ResourceWithHistory struct {
 	resource                                 ctlres.Resource
